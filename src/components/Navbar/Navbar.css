@@ -1,0 +1,16 @@
+.Navbar {
+    height: 5em;
+}
+
+.clustrLogo {
+    font-size: 35px;
+    margin-left: 4.5em;
+    margin-top: .5em;
+    font-weight: 600;
+}
+
+.userName {
+    font-size: 20px;
+    margin-right: 4.5em;
+    margin-top: 1em;
+}
