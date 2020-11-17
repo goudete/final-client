@@ -1,0 +1,16 @@
+.HomeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2em;
+    margin-right: 1em;
+    margin-top: 4em;
+}
+
+.flexItem {
+    flex: 1;
+}
+
+.classesCard {
+    width: 30em;
+    margin: .5em;
+}

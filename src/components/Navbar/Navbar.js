@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Navbar, Alignment } from "@blueprintjs/core";
+import { Navbar, Alignment, Button } from "@blueprintjs/core";
 import { Menu, MenuDivider, MenuItem, Popover, Position, } from "@blueprintjs/core"
-
+import {
+    Link
+  } from "react-router-dom";
 
 import './Navbar.css'
 
@@ -18,15 +20,18 @@ class Navbaroo extends Component {
     return (
       <Navbar className="Navbar bp3-dark">
         <Navbar.Group align={Alignment.LEFT}>
-          <div className="clustrLogo">
-            Final Project
-          </div>
+
+        <Navbar.Heading>Final Project</Navbar.Heading>
+
         </Navbar.Group>
         
         <Navbar.Group align={Alignment.RIGHT}>
-          <div className="userName">
-            Enrique/Rowan
-          </div>
+            <Link to="/classes">
+                <Button className="bp3-minimal" icon="learning" text="Classes" />
+            </Link>
+            <Link to="/profs">
+                <Button className="bp3-minimal" icon="predictive-analysis" text="Professors" />
+            </Link>
         </Navbar.Group>
       </Navbar>
     )

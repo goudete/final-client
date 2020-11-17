@@ -1,4 +1,5 @@
 import Home from "./pages/Home/Home";
+import Professors from "./pages/Professors/Professors"
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,11 +17,11 @@ function App() {
             <Signup />
           </Route> */}
           
-          {/* <Route path="/login">
-            <Login />
-          </Route> */}
+          <Route path="/profs">
+            <Professors />
+          </Route>
 
-          <Route path="/home">
+          <Route path="/classes">
             <Home />
           </Route>
 
