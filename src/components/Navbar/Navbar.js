@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { Navbar, Alignment, Button } from "@blueprintjs/core";
+import GoogleLogoutButton from '../GoogleAuth/GoogleLogoutButton'
 import { Menu, MenuDivider, MenuItem, Popover, Position, } from "@blueprintjs/core"
 import {
     Link
   } from "react-router-dom";
+import { Subscribe } from 'unstated';
+import AuthContainer from '../../containers/AuthContainer'
+
 
 import './Navbar.css'
+import GoogleLogin from 'react-google-login';
 
 
 class Navbaroo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      loggedIn: true
     }
   }
+
 
   render() {
     return (
@@ -32,10 +38,17 @@ class Navbaroo extends Component {
             <Link to="/profs">
                 <Button className="bp3-minimal" icon="predictive-analysis" text="Professors" />
             </Link>
+            <GoogleLogoutButton />
         </Navbar.Group>
       </Navbar>
     )
   }
 }
 
-export default Navbaroo;
+export default props => {
+  return (
+    <Subscribe to={[AuthContainer]}>
+      {(a) => <Navbaroo auth = {a}/>}
+    </Subscribe>
+  )
+}

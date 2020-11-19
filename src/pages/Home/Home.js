@@ -43,7 +43,7 @@ class Home extends React.Component {
 
                 <Card className="classesCard" interactive={true} elevation={Elevation.TWO}>
                   <h3>{c.name}</h3>
-                  <p>{c.description}</p>
+                  <p>{ c.description.length > 350 ? (c.description.substring(0, 350) + '...') : (c.description) }</p>
                 </Card>
 
               </div>
