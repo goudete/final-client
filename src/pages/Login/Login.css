@@ -1,3 +1,19 @@
 .loginContainer {
-    
+    background-color: #cef260;
+
+
+}
+
+.LandingText {
+    font-size: 8em;
+
+}
+
+.LandingTextWrapper{
+
+}
+
+.loginCard {
+    width: 25em;
+
 }

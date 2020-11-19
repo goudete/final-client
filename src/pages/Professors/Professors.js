@@ -2,10 +2,15 @@ import React, { Component, Fragment } from 'react';
 import Navbaroo from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import { Card, Elevation } from "@blueprintjs/core";
+import { Subscribe } from 'unstated';
+import AuthContainer from '../../containers/AuthContainer'
+import {
+  Redirect
+} from "react-router-dom";
 
 import './Professors.css'
 
-class Home extends React.Component {
+class Professors extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,24 +39,38 @@ class Home extends React.Component {
   }
 
   render() {
+    const loggedIn = this.props.auth.state.loggedIn
+
       return (
-      <Fragment>
-          <Navbaroo />
-          <div className="HomeContainer">
-            {this.state.profs.map((c) => (
-              <div className="flexItem">
+        loggedIn ?
+        (
+          <Fragment>
+              <Navbaroo />
+              <div className="HomeContainer">
+                {this.state.profs.map((c) => (
+                  <div className="flexItem">
 
-                <Card className="classesCard" interactive={true} elevation={Elevation.TWO}>
-                  <h3>{c.name}</h3>
-                  <p>{c.description}</p>
-                </Card>
+                    <Card className="classesCard" interactive={true} elevation={Elevation.TWO}>
+                      <h3>{c.name}</h3>
+                      <p>{c.description}</p>
+                    </Card>
 
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-      </Fragment>
-      
+          </Fragment>
+        ) :
+        (
+          <Redirect to="/" />
+        )
     );
   }
 }
-export default Home
+
+export default props => {
+  return (
+    <Subscribe to={[AuthContainer]}>
+      {(a) => <Professors auth = {a}/>}
+    </Subscribe>
+  )
+}
