@@ -2,6 +2,11 @@ import React, { Component, Fragment } from 'react';
 import Navbaroo from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import { Card, Elevation } from "@blueprintjs/core";
+import { Subscribe } from 'unstated';
+import AuthContainer from '../../containers/AuthContainer'
+import {
+  Redirect
+} from "react-router-dom";
 
 import './Home.css'
 
@@ -34,7 +39,10 @@ class Home extends React.Component {
   }
 
   render() {
+    const loggedIn = this.props.auth.state.loggedIn
       return (
+      loggedIn ?
+      (
       <Fragment>
           <Navbaroo />
           <div className="HomeContainer">
@@ -50,8 +58,19 @@ class Home extends React.Component {
             ))}
           </div>
       </Fragment>
-      
+      ) :
+      (
+        <Redirect to="/" />
+      )
     );
   }
 }
-export default Home
+
+
+export default props => {
+  return (
+    <Subscribe to={[AuthContainer]}>
+      {(a) => <Home auth = {a}/>}
+    </Subscribe>
+  )
+}

@@ -1,18 +1,20 @@
 import { Container } from 'unstated'
 
 class AuthContainer extends Container {
+    
     state = {
         loggedIn: false
     }
-
-    loginSuccess() {
+    
+    
+    loginSuccess = () => {
         console.log('login Success!')
-        this.setState({ loggedIn: true})
+        this.setState({ loggedIn: true })
     }
 
-    logoutSuccess() {
+    logoutSuccess = () => {
         console.log('logout success')
-        this.setState({ loggedIn: false})
+        this.setState({ loggedIn: false })
     }
 
 

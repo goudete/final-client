@@ -25,7 +25,6 @@ class GoogleLoginButton extends Component {
                     buttonText={'Login with Google'}
                     onSuccess={this.props.auth.loginSuccess}
                     onFailure={this.failure}
-                    redirectUri={'http://localhost/classes'}
                 />
             </div>
 

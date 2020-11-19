@@ -9,29 +9,25 @@ import AuthContainer from '../../containers/AuthContainer'
 
 import './Login.css'
 
-// class Login extends Component {
-    const Login = (props) => {
 
-   
+const Login = (props) => {
 
-    // render () {
-        const loggedIn = props.auth.state.loggedIn
-        return (
-            loggedIn ?
-                (<Redirect to="/classes" />)
-                :
-                (
-                <div className="loginContainer">
-                    <GoogleLoginButton 
-                        loginSuccess={props.auth.loginSuccess}
-                    />
-                </div>
-                )
-            
-        )
-    }
-    // }
-// }
+    const loggedIn = props.auth.state.loggedIn
+    return (
+        loggedIn ?
+            (<Redirect to="/classes" />)
+            :
+            (
+            <div className="loginContainer">
+                <GoogleLoginButton 
+                    loginSuccess={props.auth.loginSuccess}
+                />
+            </div>
+            )
+        
+    )
+}
+
 
 export default props => {
     return (
