@@ -27,5 +27,16 @@
 }
 
 .drawerContainer {
-    margin: 1em;
+    position: relative;
+    margin: 3em;
+}
+
+.drawerInfoContainer {
+    display: flex;
+    position: absolute;
+    bottom: -30em;
+    left: 19%;
+    margin: 0 0 0 -90px;
+    width: 90%
+
 }

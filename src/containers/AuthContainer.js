@@ -1,9 +1,13 @@
 import { Container } from 'unstated'
+import axios from 'axios';
 
 class AuthContainer extends Container {
     
     state = {
-        loggedIn: false
+        loggedIn: false,
+        username: null,
+        password: null,
+        token: null
     }
     
     
@@ -14,7 +18,36 @@ class AuthContainer extends Container {
 
     logoutSuccess = () => {
         console.log('logout success')
-        this.setState({ loggedIn: false })
+        this.setState({ 
+            loggedIn: false,
+            username: null,
+            password: null,
+            token: null
+        })
+    }
+
+    handleUsername = (usr) => {
+        this.setState({ username: usr })
+    }
+
+    handlePass = (pass) => {
+        this.setState({ password: pass })
+    }
+    handleSubmit = () => {
+        console.log('handle submit')
+        axios.post(`/login`, {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then(res => {
+        const token = res.data.token;
+        if (token) {
+            this.setState({ 
+                token: token,
+                loggedIn: true
+             });
+        }
+        })
     }
 
 

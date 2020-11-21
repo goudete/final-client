@@ -10,7 +10,8 @@
     flex: 1;
 }
 
-.classesCard {
-    width: 30em;
+.profsCard {
+    width: 25em;
     margin: .5em;
+    height: 15em;
 }

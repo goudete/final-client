@@ -94,7 +94,7 @@ class Home extends React.Component {
             <div className="drawerContainer">
               <h1>{this.state.classDetails && this.state.classDetails.name}</h1>
               <h4>{this.state.classDetails && this.state.classDetails.description}</h4>
-              <div className="infoContainer">
+              <div className="drawerInfoContainer">
                 <div className="flexItem">
                   <h3>{this.state.classDetails && this.state.classDetails.classroom}</h3>
                 </div>

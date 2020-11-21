@@ -50,9 +50,10 @@ class Professors extends React.Component {
                 {this.state.profs.map((c) => (
                   <div className="flexItem">
 
-                    <Card className="classesCard" interactive={true} elevation={Elevation.TWO}>
+                    <Card className="profsCard" elevation={Elevation.TWO}>
                       <h3>{c.name}</h3>
-                      <p>{c.description}</p>
+                      <p>{c.email}</p>
+                      <p>{c.office}</p>
                     </Card>
 
                   </div>

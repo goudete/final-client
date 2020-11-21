@@ -1,19 +1,36 @@
 .loginContainer {
+    display: flex;
     background-color: #cef260;
-
-
+    width: 100%;
+    height: 100vh;
+    
 }
 
-.LandingText {
-    font-size: 8em;
-
+.col {
+    flex:50%;
+    flex:1;
 }
 
-.LandingTextWrapper{
-
+.landingText {
+    margin-top: 15em;
+    margin-left: 10em;
 }
 
 .loginCard {
+    display: relative;
+    margin-top: 15em;
+    margin-left: 8em;
     width: 25em;
+    height: 30em;
+}
 
+.textz {
+    font-size: 6em;
+    font-weight: 500;
+}
+
+.googlebtn {
+    margin-left: 5em;
+    margin-top: 3em;
+    margin-bottom: 2em;
 }
