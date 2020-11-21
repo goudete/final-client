@@ -11,7 +11,21 @@
 }
 
 .classesCard {
+    position: relative;
     width: 30em;
     margin: .5em;
     height: 20em;
+}
+
+.infoContainer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    margin: 0 0 0 -90px;
+    width: 90%
+}
+
+.drawerContainer {
+    margin: 1em;
 }
