@@ -48,10 +48,12 @@ const Login = (props) => {
                             value={props.auth.password}
                             style={{ marginTop: '1em'}}
                             placeholder='password'
+                            type='password'
                         />
                         <Button
                             onClick={props.auth.handleSubmit}
                             style={{ marginTop: '1em'}}
+                            fill
                         >
                             Login
                         </Button>

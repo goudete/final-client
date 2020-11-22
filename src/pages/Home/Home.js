@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Navbaroo from '../../components/Navbar/Navbar';
 import axios from 'axios';
-import { Card, Drawer, Elevation } from "@blueprintjs/core";
+import { Card, Drawer, Elevation, Button, Dialog, InputGroup } from "@blueprintjs/core";
 import { Subscribe } from 'unstated';
 import AuthContainer from '../../containers/AuthContainer'
 import {
@@ -10,6 +10,7 @@ import {
 
 import './Home.css'
 
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -17,10 +18,16 @@ class Home extends React.Component {
       classes: [],
       profs: [],
       classDetails: null,
-      toggleDrawer: false
+      toggleDrawer: false,
+      toggleNewClass: false,
+      name: '',
+      email: '',
+      office: ''
     }
     this.clickCard = this.clickCard.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
+    this.clickNewClass = this.clickNewClass.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +47,23 @@ class Home extends React.Component {
       }
     })
   }
+  submitNewProf() {
+    console.log('submit new prof')
+        axios.post(`/prof`, {
+            name: this.state.name,
+            email: this.state.email,
+            office: this.state.office,
+        }, {
+          headers: {'token': this.props.auth.token}
+        })
+        .then(res => {
+          console.log(res)
+        
+        })
+        .catch(function (error) {
+          console.log(JSON.stringify(error))
+        })
+  }
   clickCard(id) {
     axios.get(`/class/${id}`)
     .then(res => {
@@ -52,9 +76,19 @@ class Home extends React.Component {
       }
     })
   }
+  clickNewClass() {
+    this.setState({
+      toggleNewClass: true
+    })
+  }
   toggle() {
     this.setState({
       toggleDrawer: null
+    })
+  }
+  toggleClass() {
+    this.setState({
+      toggleNewClass: false
     })
   }
 
@@ -65,6 +99,59 @@ class Home extends React.Component {
       (
       <Fragment>
           <Navbaroo />
+          {this.props.auth.state.token ? 
+            (
+              <div className="btnContainer">
+                <Button
+                  onClick={() => this.clickNewClass()}
+                >
+                  Add New Professor
+                </Button>
+              </div>
+            ) :
+            ('')
+          }
+          <Dialog
+            isOpen={this.state.toggleNewClass}
+            onClose={() => this.toggleClass()}
+            canOutsideClickClose={true}
+          >
+            <div className="drawerContainer">
+              <h1>Add New Professor</h1>
+              <InputGroup
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                  value={this.state.name}
+                  style={{ marginTop: '1em'}}
+                  placeholder='Name'
+                  type='text'
+              />
+              <InputGroup
+                  onChange={(e) => this.setState({ email: e.target.value })}
+                  value={this.state.email}
+                  style={{ marginTop: '1em'}}
+                  placeholder='Email'
+                  type="text"
+              />
+              <InputGroup
+                  onChange={(e) => this.setState({ office: e.target.value })}
+                  value={this.state.office}
+                  style={{ marginTop: '1em'}}
+                  placeholder='Office'
+                  type="text"
+              />
+             
+
+              <Button
+                style={{ marginTop: '1em' }}
+                onClick={() => this.submitNewProf()}
+                fill
+              >
+                Add New Professor
+              </Button>
+
+            </div>
+            
+          </Dialog>
           <div className="HomeContainer">
             {this.state.classes.map((c) => (
               <div className="flexItem">
